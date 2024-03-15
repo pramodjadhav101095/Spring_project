@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- bean definitions here -->
+	<!-- Setter Injection -->
+
+	<bean id="std" class="com.prowings.Student">
+		<property name="id" value="10"></property>
+		<property name="name" value="Ram"></property>
+		<property name="address" ref="addr"></property>
+
+	</bean>
+
+	<bean id="addr" class="com.prowings.Address">
+		<property name="pincod" value="1010"></property>
+		<property name="city" value="Pune"></property>
+		<property name="country" value="India"></property>
+
+	</bean>
+
+	<!-- Employee Bean with List of EmpDetails -->
+
+	<!-- Company -->
+
+	<bean id="Comp" class="com.prowings.Company">
+		<property name="comName" value="Prowings"></property>
+		<property name="location" value="Pune"></property>
+		<property name="employeedetails">
+
+			<list>
+				<ref bean="empd1" />
+				<ref bean="empd2" />      <!-- here we refer beans of employee details -->
+				<ref bean="empd3" />
+			</list>
+		</property>
+
+		<property name="client">
+			<map>
+
+				<entry key="111" value="HSBC" />
+				<entry key="222" value="ZORIENT" />
+				<entry key="333" value="TCS" />
+
+			</map>
+
+		</property>
+		
+		<property name="companyprop"> 
+		<props>  
+		<prop key="p1">ABC</prop>
+		<prop key="p2">DEF</prop>
+		<prop key="p3">pqr</prop>
+		
+		
+		</props>
+		
+		
+		
+		</property>
+	</bean>
+
+
+	<!-- Employee Details -->
+
+	<bean id="empd1" class="com.prowings.EmployeeDetails">
+		<property name="eid" value="1001"></property>
+		<property name="Name" value="AAA"></property>
+		<property name="salary" value="1000.0"></property>
+		<property name="designtion" value="BackEndDeveloper"></property>
+		<property name="accessories">
+
+			<set>
+				<value>ThinkPad</value>
+				<value>Bag</value>
+				<value>HeadPhone</value>
+			</set>
+
+		</property>
+	</bean>
+
+	<bean id="empd2" class="com.prowings.EmployeeDetails">
+		<property name="eid" value="1002"></property>
+		<property name="Name" value="BBB"></property>
+		<property name="salary" value="2000.0"></property>
+		<property name="designtion" value="FrondEndDeveloper"></property>
+		<property name="accessories">
+
+			<set>
+				<value>ThinkPad</value>
+				<value>Bag</value>
+				<value>HeadPhone</value>
+			</set>
+
+		</property>
+	</bean>
+
+	<bean id="empd3" class="com.prowings.EmployeeDetails">
+		<property name="Name" value="CCC"></property>
+		<property name="eid" value="1003"></property>
+		<property name="salary" value="3000.0"></property>
+		<property name="designtion" value="SQLDeveloper"></property>
+		<property name="accessories">
+
+			<set>
+				<value>ThinkPad</value>
+				<value>Bag</value>
+				<value>HeadPhone</value>
+			</set>
+
+		</property>
+	</bean>
+
+
+	<!-- <bean id="empd3" class="com.prowings.EmployeeDetails"> <constructor-arg 
+		index="0" name="eid" value="1003"/> <constructor-arg index="1" name="Name" 
+		value="CCC"/> <constructor-arg index="2" name="salary" value="3000.0"/> <constructor-arg 
+		index="3" name="designation" value="SQLDeveloper"/> <constructor-arg index="4" 
+		name="accessories"> <set> <value>ThinkPad</value> <value>Bag</value> <value>HeadPhone</value> 
+		</set> </constructor-arg> </bean> -->
+
+</beans>
